@@ -1,0 +1,16 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Profissional | ÉLORA BEAUTY</title><link rel="stylesheet" href="assets/css/style.css"></head><body>
+<nav class="topbar"><a class="brand" href="index.html">✿ ÉLORA<span> BEAUTY</span></a><div class="nav-actions"><a class="nav-link" href="index.html">← Voltar</a></div></nav>
+<main class="seller-page"><div id="sellerProfile"><p class="empty-state">Carregando profissional...</p></div>
+<section class="section"><div class="section-heading"><div><span class="eyebrow">SERVIÇOS</span><h2>Escolha seu cuidado</h2></div></div><div id="publicServices" class="service-list"></div></section>
+<section class="section" id="bookingSection"><div class="section-heading"><div><span class="eyebrow">AGENDE SEU HORÁRIO</span><h2>Reserve seu atendimento</h2></div></div><div id="bookingStatus"></div>
+<form id="bookingForm" class="booking-form">
+<label>Serviço<select id="bookingService" required><option value="">Escolha um serviço</option></select></label>
+<label>Técnica / estilo<select id="bookingOption"><option value="">Sem opção específica</option></select></label>
+<label>Data<input id="bookingDate" type="date" required></label>
+<label>Horário<input id="bookingTime" type="time" required></label>
+<label>Observações<textarea id="bookingNotes" placeholder="Conte algum detalhe importante (opcional)"></textarea></label>
+<button class="btn btn-primary" type="submit">Solicitar agendamento</button><p id="bookingMessage" role="status"></p>
+</form></section>
+<section class="section"><div class="section-heading"><div><span class="eyebrow">LOJINHA</span><h2>Produtos disponíveis</h2></div></div><div id="publicProducts" class="product-grid"></div></section></main>
+<footer><a class="brand" href="index.html">✿ ÉLORA<span> BEAUTY</span></a><p>Um espaço feito para celebrar sua beleza.</p></footer>
+<script src="assets/js/public-seller.js"></script></body></html>

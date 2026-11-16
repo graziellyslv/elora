@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Criar conta | ÉLORA BEAUTY</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="login-page">
+
+    <main class="login-box">
+
+        <a class="brand" href="index.html">
+            ✿ ÉLORA<span> BEAUTY</span>
+        </a>
+
+        <h2>Crie sua conta</h2>
+
+        <p>
+            Escolha se você quer comprar ou oferecer serviços.
+        </p>
+
+        <form id="formCadastro">
+
+            <input
+                id="name"
+                type="text"
+                placeholder="Nome completo"
+                required
+            >
+
+            <input
+                id="email"
+                type="email"
+                placeholder="E-mail"
+                required
+            >
+
+            <input
+                id="password"
+                type="password"
+                minlength="8"
+                placeholder="Senha (mínimo 8 caracteres)"
+                required
+            >
+
+            <label
+                for="role"
+                style="display: block; text-align: left; font-size: 12px; margin: 8px 0;"
+            >
+                Quero me cadastrar como
+            </label>
+
+            <select
+                id="role"
+                style="width: 100%; padding: 12px; border: 1px solid #ead9df; border-radius: 10px;"
+            >
+                <option value="buyer">Comprador(a)</option>
+                <option value="seller">Vendedor(a) / Profissional</option>
+            </select>
+
+            <button class="btn btn-primary" type="submit">
+                Criar minha conta
+            </button>
+
+        </form>
+
+        <p id="msg"></p>
+
+        <p>
+            Já tem conta?
+            <a href="login.html">Entrar</a>
+        </p>
+
+        <p>
+            <a href="index.html">Voltar ao início</a>
+        </p>
+
+    </main>
+
+    <script>
+        const formCadastro = document.getElementById("formCadastro");
+        const msg = document.getElementById("msg");
+
+        formCadastro.addEventListener("submit", async (e) => {
+
+            e.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+            const role = document.getElementById("role").value;
+
+            msg.textContent = "Criando sua conta...";
+
+            try {
+
+                const response = await fetch("/api/auth/register", {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    credentials: "same-origin",
+
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        password,
+                        role
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || "Não foi possível criar sua conta.");
+                }
+
+                msg.textContent = "Conta criada com sucesso!";
+
+                location.href = data.user.role === "seller"
+                    ? "painel-vendedor.html"
+                    : "pedidos.html";
+
+            } catch (error) {
+
+                msg.textContent = error.message;
+
+            }
+
+        });
+    </script>
+
+</body>
+</html>

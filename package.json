@@ -1,0 +1,24 @@
+{
+  "name": "elora-beauty",
+  "version": "2.0.0",
+  "private": true,
+  "description": "ÉLORA BEAUTY — plataforma de beleza com painel de profissionais",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.5.1",
+    "connect-pg-simple": "^10.0.0",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "multer": "^1.4.5-lts.1",
+    "multer-storage-cloudinary": "^4.0.0",
+    "pg": "^8.13.1"
+  }
+}
